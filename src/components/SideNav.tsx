@@ -21,7 +21,7 @@ export const SideNav: FC<Props> = ({ items, activeId, visible }) => {
   return (
     <div
       className={[
-        "fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 lg:flex",
+        "fixed right-4 top-1/2 z-40 -translate-y-1/2 flex",
         visible ? "opacity-100" : "pointer-events-none opacity-0",
         "transition-opacity animate-in fade-in duration-500 ease-in-out",
       ].join(" ")}
