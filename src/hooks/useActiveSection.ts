@@ -15,10 +15,9 @@ export const useActiveSection = (
   sectionIds: readonly string[],
   options: UseActiveSectionOptions = {}
 ): ActiveSectionState => {
-  // Default is tuned for a sticky top navbar: treat the top ~80px as "not visible"
-  // so the active section doesn't lag/jump while smooth-scrolling to anchors.
   const { rootMargin = "-80px 0px -60% 0px", threshold = 0.1 } = options;
   const firstId = sectionIds[0] ?? "";
+  const lastId = sectionIds[sectionIds.length - 1] ?? "";
   const [activeId, setActiveId] = useState(firstId);
   const [activeIds, setActiveIds] = useState<readonly string[]>(
     firstId ? [firstId] : []
@@ -33,16 +32,35 @@ export const useActiveSection = (
 
     if (els.length === 0) return;
 
+    const latest = new Map<
+      string,
+      { isIntersecting: boolean; ratio: number }
+    >();
+
     const observer = new IntersectionObserver(
       (entries) => {
-        // pick the most visible intersecting section
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0)
-          );
+        for (const e of entries) {
+          const id = (e.target as HTMLElement | null)?.id;
+          if (!id) continue;
+          latest.set(id, {
+            isIntersecting: e.isIntersecting,
+            ratio: e.intersectionRatio ?? 0,
+          });
+        }
 
-        const nextId = visible[0]?.target?.id;
+        // Pick the most visible *currently intersecting* section across all ids.
+        // Tie-breaker is stable: earlier id in `ids` wins when ratios match.
+        let nextId: string | null = null;
+        let bestRatio = -1;
+        for (const id of ids) {
+          const s = latest.get(id);
+          if (!s?.isIntersecting) continue;
+          if (s.ratio > bestRatio) {
+            bestRatio = s.ratio;
+            nextId = id;
+          }
+        }
+
         if (!nextId) return;
 
         setActiveId(nextId);
@@ -60,29 +78,44 @@ export const useActiveSection = (
 
   useEffect(() => {
     // If user scrolls all the way to the top, keep the first section active
-    // (but don't clear the visited list).
-    if (!firstId) return;
+    // (but don't clear the visited list). Also, if user scrolls all the way to
+    // the bottom, keep the last section active (IO can miss the last one,
+    // especially with aggressive rootMargins and a footer after sections).
+    if (!firstId && !lastId) return;
     const onScroll = () => {
-      if (window.scrollY <= 0) {
+      if (firstId && window.scrollY <= 0) {
         setActiveId(firstId);
-        setActiveIds((prev) => (prev.includes(firstId) ? prev : [firstId, ...prev]));
+        setActiveIds((prev) =>
+          prev.includes(firstId) ? prev : [firstId, ...prev]
+        );
+        return;
+      }
+
+      if (lastId) {
+        const bottom = window.scrollY + window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        // small epsilon to handle fractional scroll values
+        if (bottom >= docHeight - 2) {
+          setActiveId(lastId);
+          setActiveIds((prev) =>
+            prev.includes(lastId) ? prev : [...prev, lastId]
+          );
+        }
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [firstId]);
+  }, [firstId, lastId]);
 
   return { activeId, activeIds };
 };
 
 export const useActiveSectionId = () => {
-  return useContext(ActiveSectionIdContext)?.activeId ?? null;
+  const activeSection = useContext(ActiveSectionIdContext);
+  return activeSection?.activeId ?? null;
 };
 
 export const useActiveSectionIds = () => {
-  return useContext(ActiveSectionIdContext)?.activeIds ?? [];
-};
-
-export const useActiveSectionState = () => {
-  return useContext(ActiveSectionIdContext);
+  const activeSection = useContext(ActiveSectionIdContext);
+  return activeSection?.activeIds ?? [];
 };

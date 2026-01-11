@@ -1,7 +1,42 @@
 import { Section } from "../Section";
 import { cv } from "../../data/resumeData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faReact, faVuejs } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCalculator,
+  faCode,
+  faFlagCheckered,
+  faMusic,
+  faRightLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import type { FC } from "react";
 import { ProjectsSectionSkeleton } from "../common/skeletons/ProjectsSectionSkeleton";
+
+const getProjectIcon = (
+  name: string,
+  stack: readonly string[]
+): IconDefinition => {
+  const nameLower = name.toLowerCase();
+  const stackLower = stack.map((s) => s.toLowerCase());
+
+  switch (true) {
+    case nameLower.includes("calculator"):
+      return faCalculator;
+    case nameLower.includes("converter"):
+      return faRightLeft;
+    case nameLower.includes("music"):
+      return faMusic;
+    case nameLower.includes("horse") || nameLower.includes("racing"):
+      return faFlagCheckered;
+    case stackLower.some((s) => s.includes("react")):
+      return faReact;
+    case stackLower.some((s) => s.includes("vue")):
+      return faVuejs;
+    default:
+      return faCode;
+  }
+};
 
 export const ProjectsSection: FC = () => {
   return (
@@ -18,7 +53,13 @@ export const ProjectsSection: FC = () => {
             className="card border border-base-200 bg-base-300 shadow-sm hover:-translate-y-2 transition-all duration-500 ease-in-out cursor-pointer"
           >
             <div className="card-body">
-              <h3 className="text-xl font-bold">{p.name}</h3>
+              <h3 className="text-lg font-semibold flex items-center gap-2">
+                <FontAwesomeIcon
+                  icon={getProjectIcon(p.name, p.stack)}
+                  className="h-5 w-5 text-primary"
+                />
+                <span>{p.name}</span>
+              </h3>
 
               <p className="mt-2 text-sm leading-relaxed text-base-content/80">
                 {p.description}

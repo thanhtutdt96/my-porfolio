@@ -18,6 +18,7 @@ function getInitialTheme(): ThemeMode {
 
 export function useTheme() {
   const [theme, setTheme] = useState<ThemeMode>(() => getInitialTheme());
+  const isDarkMode = theme === "dracula";
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -26,5 +27,5 @@ export function useTheme() {
 
   const toggle = () => setTheme((t) => (t === "dracula" ? "light" : "dracula"));
 
-  return { theme, setTheme, toggle } as const;
+  return { theme, setTheme, toggle, isDarkMode } as const;
 }

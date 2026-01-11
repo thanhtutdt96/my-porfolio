@@ -33,7 +33,7 @@ const App: FC = () => {
               <ProjectsSection />
             </div>
 
-            <div className="border-t border-base-200">
+            <div className="border-t border-base-200 pb-20">
               <ContactSection />
             </div>
 

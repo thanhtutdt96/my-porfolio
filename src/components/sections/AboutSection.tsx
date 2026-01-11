@@ -8,9 +8,11 @@ import {
   faVuejs,
 } from "@fortawesome/free-brands-svg-icons";
 import TextType from "../common/TextType";
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import { useActiveSectionIds } from "../../hooks/useActiveSection";
 import { AboutSectionSkeleton } from "../common/skeletons/AboutSectionSkeleton";
+import resumePdf from "../../assets/tupham_resume.pdf";
+import { Modal } from "../common/Modal";
 
 const helloWorld = "Hello World!";
 
@@ -23,6 +25,16 @@ export const AboutSection: FC = () => {
   const firstName = getFirstName(cv.name);
   const activeIds = useActiveSectionIds();
   const isActive = activeIds.length > 0 ? activeIds.includes("about") : true;
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const resumeUrl = `${resumePdf}#view=FitH`;
+
+  const handleViewResumeMobile = () => {
+    window.open(resumeUrl, "_blank");
+  };
+
+  const handleViewResume = () => {
+    setIsResumeOpen(true);
+  };
 
   return (
     <section id="about" className="scroll-mt-24 py-16 sm:py-20">
@@ -98,17 +110,40 @@ export const AboutSection: FC = () => {
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3 animate-in slide-in-from-bottom-full duration-2000 ease-in-out">
-                <a href="#projects" className="btn btn-sm btn-primary">
+                <button
+                  type="button"
+                  onClick={handleViewResumeMobile}
+                  className="btn btn-sm btn-primary lg:hidden block"
+                >
+                  View resume
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-primary lg:block hidden"
+                  onClick={handleViewResume}
+                >
+                  View resume
+                </button>
+                <a href="#projects" className="btn btn-sm btn-ghost">
                   View projects
-                </a>
-                <a href="#contact" className="btn btn-sm btn-ghost">
-                  Contact
                 </a>
               </div>
             </div>
           </div>
         )}
       </div>
+
+      <Modal
+        open={isResumeOpen}
+        title="Resume"
+        onClose={() => setIsResumeOpen(false)}
+      >
+        <iframe
+          title="Resume PDF"
+          src={resumeUrl}
+          className="h-[75vh] w-full"
+        />
+      </Modal>
     </section>
   );
 };

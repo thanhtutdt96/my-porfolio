@@ -1,4 +1,7 @@
 import type { FC } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLightbulb, faMoon } from "@fortawesome/free-regular-svg-icons";
+import { useTheme } from "../hooks/useTheme";
 
 export type SideNavItem = {
   id: string;
@@ -12,6 +15,9 @@ type Props = {
 };
 
 export const SideNav: FC<Props> = ({ items, activeId, visible }) => {
+  const { theme, toggle, isDarkMode } = useTheme();
+  const themeTooltip = theme === "dracula" ? "Light mode" : "Dark mode";
+
   return (
     <div
       className={[
@@ -51,25 +57,41 @@ export const SideNav: FC<Props> = ({ items, activeId, visible }) => {
 
         <div className="h-px w-6 bg-base-200" />
 
-        <button
-          type="button"
-          className="btn btn-primary btn-xs btn-circle"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Scroll to top"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="h-4 w-4"
+        <div className="tooltip tooltip-left" data-tip={themeTooltip}>
+          <button
+            type="button"
+            className="btn btn-ghost btn-xs btn-circle"
+            onClick={toggle}
+            aria-label={themeTooltip}
           >
-            <path
-              fillRule="evenodd"
-              d="M12 4.5a.75.75 0 0 1 .53.22l7 7a.75.75 0 1 1-1.06 1.06l-5.72-5.72V19.5a.75.75 0 0 1-1.5 0V7.06l-5.72 5.72a.75.75 0 1 1-1.06-1.06l7-7A.75.75 0 0 1 12 4.5Z"
-              clipRule="evenodd"
+            <FontAwesomeIcon
+              icon={isDarkMode ? faMoon : faLightbulb}
+              className="h-4 w-4"
             />
-          </svg>
-        </button>
+          </button>
+        </div>
+
+        <div className="tooltip tooltip-left" data-tip="Scroll to top">
+          <button
+            type="button"
+            className="btn btn-primary btn-xs btn-circle"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Scroll to top"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-4 w-4"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 4.5a.75.75 0 0 1 .53.22l7 7a.75.75 0 1 1-1.06 1.06l-5.72-5.72V19.5a.75.75 0 0 1-1.5 0V7.06l-5.72 5.72a.75.75 0 1 1-1.06-1.06l7-7A.75.75 0 0 1 12 4.5Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const SkillGroup: FC<SkillGroupProps> = ({ title, icon, items, className }) => {
       )}
     >
       <div className="card-body">
-        <h3 className="card-title text-base">
+        <h3 className="card-title text-lg font-semibold">
           <FontAwesomeIcon icon={icon} className="text-primary" />
           <span>{title}</span>
         </h3>
