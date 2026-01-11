@@ -37,7 +37,7 @@ export const AboutSection: FC = () => {
   };
 
   return (
-    <section id="about" className="scroll-mt-24 py-16 sm:py-20">
+    <section id="about" className="scroll-mt-24 py-10 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         {!isActive ? (
           <AboutSectionSkeleton />

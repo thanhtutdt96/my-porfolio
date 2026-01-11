@@ -72,10 +72,10 @@ export const ContactSection: FC = () => {
                 </div>
 
                 <div className="min-w-0">
-                  <div className="truncate text-base font-semibold">
+                  <div className="truncate text-base lg:text-lg font-semibold">
                     {c.label}
                   </div>
-                  <div className="truncate text-sm text-base-content/60">
+                  <div className="truncate text-sm lg:text-base text-base-content/60">
                     {c.sublabel}
                   </div>
                 </div>

@@ -22,12 +22,12 @@ export const Section: FC<Props> = ({
   const isActive = activeIds.length > 0 ? activeIds.includes(id) : true;
 
   return (
-    <section id={id} className="scroll-mt-20 py-16 sm:py-20">
+    <section id={id} className="scroll-mt-20 py-10 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mb-10" id={`${id}-heading`}>
           {isActive ? (
             <>
-              <h2 className="animate-in slide-in-from-right-20 duration-500 ease-in-out mb-2 text-3xl font-bold tracking-tight sm:text-4xl ">
+              <h2 className="animate-in slide-in-from-right-20 duration-500 ease-in-out mb-2 text-xl lg:text-3xl font-bold tracking-tight sm:text-4xl ">
                 {title}
               </h2>
               {eyebrow ? (

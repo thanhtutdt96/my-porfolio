@@ -15,7 +15,7 @@ export const useActiveSection = (
   sectionIds: readonly string[],
   options: UseActiveSectionOptions = {}
 ): ActiveSectionState => {
-  const { rootMargin = "-80px 0px -60% 0px", threshold = 0.1 } = options;
+  const { rootMargin = "-120px 0px -60% 0px", threshold = 0.1 } = options;
   const firstId = sectionIds[0] ?? "";
   const lastId = sectionIds[sectionIds.length - 1] ?? "";
   const [activeId, setActiveId] = useState(firstId);

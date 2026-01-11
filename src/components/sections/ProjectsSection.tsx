@@ -53,7 +53,7 @@ export const ProjectsSection: FC = () => {
             className="card border border-base-200 bg-base-300 shadow-sm hover:-translate-y-2 transition-all duration-500 ease-in-out cursor-pointer"
           >
             <div className="card-body">
-              <h3 className="text-lg font-semibold flex items-center gap-2">
+              <h3 className="text-base lg:text-lg font-semibold flex items-center gap-2">
                 <FontAwesomeIcon
                   icon={getProjectIcon(p.name, p.stack)}
                   className="h-5 w-5 text-primary"
