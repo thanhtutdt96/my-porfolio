@@ -4,7 +4,7 @@ Personal portfolio site built with **Vite + React + TypeScript**, styled with **
 
 ## Live site
 
-- **Demo**: `https://tupham96-porfolio.netlify.app`
+- **Demo**: `https://tupham96-portfolio.netlify.app`
 
 ## Features
 
