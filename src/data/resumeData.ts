@@ -23,7 +23,7 @@ export const cv = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/tupham96" },
   ] satisfies CvLink[],
   summary:
-    "With 7+ years of experience building scalable, high-quality web applications. Passionate on code quality, maintainability, performance, and accessibility. Experienced in component libraries, micro-frontend architecture, CI/CD pipelines, and unit testing. Proven ability to leading team, driving technical decisions, mentor teammates, and deliver production-ready features for enterprise SaaS products.",
+    "Software Engineer with 7+ years of experience building scalable, high-quality web applications. Passionate on code quality, maintainability, performance, and accessibility. Experienced in component libraries, micro-frontend architecture, CI/CD pipelines, collaborating on backend systems, and working within microservice-based architecture. Proven ability to leading team, driving technical decisions, mentor teammates, and deliver production-ready features for enterprise SaaS products.",
   skills: {
     frontEnd: [
       "React",
@@ -36,16 +36,18 @@ export const cv = {
       "SCSS",
       "TailwindCSS",
     ],
-    stateAndData: [
-      "Redux",
-      "Redux Toolkit",
-      "Zustand",
-      "Vuex",
+    stateAndData: ["Redux", "Redux Toolkit", "Zustand", "Vuex"],
+    testing: ["Jest", "Cypress", "Vitest"],
+    backEnd: [
+      "C#",
+      "Node.js",
+      "PHP",
+      "Laravel",
+      "MySQL",
       "REST APIs",
       "GraphQL",
+      "Microservices",
     ],
-    testing: ["Jest", "Cypress", "Vitest"],
-    backEnd: ["Node.js", "PHP", "Laravel", "MySQL"],
     tools: [
       "Git",
       "GitHub",
