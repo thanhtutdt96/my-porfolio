@@ -11,9 +11,14 @@ export type CvProject = {
   stack: string[];
 };
 
+export type AiUsageExperienceItem = {
+  id: string;
+  text: string;
+};
+
 export const cv = {
   name: "Tu Pham",
-  title: "Senior FrontEnd Developer",
+  title: "Software Engineer",
   location: "District 10, HCMC",
   birth: "Sep 1996",
   email: "thanhtutdt96@gmail.com",
@@ -23,7 +28,7 @@ export const cv = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/tupham96" },
   ] satisfies CvLink[],
   summary:
-    "Software Engineer with 7+ years of experience building scalable, high-quality web applications. Passionate on code quality, maintainability, performance, and accessibility. Experienced in component libraries, micro-frontend architecture, CI/CD pipelines, collaborating on backend systems, and working within microservice-based architecture. Proven ability to leading team, driving technical decisions, mentor teammates, and deliver production-ready features for enterprise SaaS products.",
+    "Software Engineer with 8 years of experience building scalable, high-quality web applications. Passionate on code quality, maintainability, performance, and accessibility. Experienced in component libraries, micro-frontend architecture, CI/CD pipelines, collaborating on backend systems, and working within microservice-based architecture. Proven ability to leading team, driving technical decisions, mentor teammates, and deliver production-ready features for enterprise SaaS products.",
   skills: {
     frontEnd: [
       "React",
@@ -58,14 +63,47 @@ export const cv = {
       "Vite",
     ],
   },
+  aiUsageExperience: [
+    {
+      id: "accelerate",
+      text: "Use Copilot and Cursor to ship faster — features, refactors, tests, code review, specs, PRs, and docs.",
+    },
+    {
+      id: "planning",
+      text: "Plan before coding: scope, constraints, edge cases, and stack. Ask AI to compare options and trade-offs.",
+    },
+    {
+      id: "mcp",
+      text: "Connect agents to Jira and Outlook via MCP to summarize tickets, pull requirements, and plan work.",
+    },
+    {
+      id: "review",
+      text: "Review AI output before committing. Use AI for debugging, stack traces, and performance issues.",
+    },
+    {
+      id: "ownership",
+      text: "Treat AI as a productivity boost — keep full ownership of engineering decisions.",
+    },
+  ] satisfies readonly AiUsageExperienceItem[],
   projects: [
     {
-      name: "Horse Racing Game",
-      href: "https://github.com/thanhtutdt96/horse-racing-game",
-      website: "https://horse-racing-2025.netlify.app",
+      name: "Media Scraper",
+      href: "https://github.com/thanhtutdt96/media-scraper",
+      website: "https://media-scraper.netlify.app",
       description:
-        "Interactive horse racing simulation featuring real-time animations, random race logic, and multi-round results.",
-      stack: ["Vue 3", "Vite", "Vuex", "TypeScript", "TailwindCSS"],
+        "Collect images and videos from websites around the world and explore them in one organized gallery.",
+      stack: [
+        "Node.js",
+        "TypeScript",
+        "cheerio",
+        "BullMQ",
+        "PostgreSQL",
+        "Prisma",
+        "React",
+        "shadcn",
+        "TailwindCSS",
+        "Vite",
+      ],
     },
     {
       name: "Elegant Music App",
@@ -76,25 +114,19 @@ export const cv = {
       stack: ["React", "Redux Toolkit", "Vite", "TypeScript", "TailwindCSS"],
     },
     {
+      name: "Horse Racing Game",
+      href: "https://github.com/thanhtutdt96/horse-racing-game",
+      website: "https://horse-racing-2025.netlify.app",
+      description:
+        "Interactive horse racing simulation featuring real-time animations, random race logic, and multi-round results.",
+      stack: ["Vue 3", "Vite", "Vuex", "TypeScript", "TailwindCSS"],
+    },
+    {
       name: "Modern Calculator",
       href: "https://github.com/thanhtutdt96/calculator",
       website: "https://modern-calculator-23.netlify.app",
       description: "Clean and user-friendly calculator application.",
       stack: ["Vue 3", "Vite", "TypeScript", "SCSS", "Jest"],
-    },
-    {
-      name: "Data Converter",
-      href: "https://github.com/thanhtutdt96/convert-csv-json",
-      website: "https://data-converter-csv-json.netlify.app",
-      description:
-        "Utility tool to convert CSV to JSON or vice versa, copy data to clipboard, and export files.",
-      stack: [
-        "React",
-        "Redux",
-        "Material UI",
-        "TypeScript",
-        "styled-components",
-      ],
     },
   ] satisfies CvProject[],
 } as const;

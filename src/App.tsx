@@ -2,6 +2,7 @@ import { TopNavbar } from "./components/TopNavbar";
 import { SideNav } from "./components/SideNav";
 import { AboutSection } from "./components/sections/AboutSection";
 import { SkillsSection } from "./components/sections/SkillsSection";
+import { AiUsageSection } from "./components/sections/AiUsageSection";
 import { ProjectsSection } from "./components/sections/ProjectsSection";
 import { ContactSection } from "./components/sections/ContactSection";
 import { useActiveSection } from "./hooks/useActiveSection";
@@ -10,7 +11,7 @@ import { ActiveSectionProvider } from "./contexts/activeSectionContext";
 import type { FC } from "react";
 
 const App: FC = () => {
-  const sectionIds = ["about", "skills", "projects", "contact"] as const;
+  const sectionIds = ["about", "skills", "ai", "projects", "contact"] as const;
   const activeSection = useActiveSection(sectionIds);
   const hasScrolled = useHasScrolled(220);
 
@@ -30,6 +31,10 @@ const App: FC = () => {
             </div>
 
             <div className="border-t border-base-200 bg-base-200/40">
+              <AiUsageSection />
+            </div>
+
+            <div className="border-t border-base-200">
               <ProjectsSection />
             </div>
 
@@ -50,6 +55,7 @@ const App: FC = () => {
         items={[
           { id: "about", label: "About" },
           { id: "skills", label: "Skills" },
+          { id: "ai", label: "AI" },
           { id: "projects", label: "Projects" },
           { id: "contact", label: "Contact" },
         ]}
