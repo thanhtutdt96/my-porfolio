@@ -1,20 +1,20 @@
-import { cv } from "../../data/resumeData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { cv } from '@/data/resumeData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faJs,
   faLaravel,
   faPhp,
   faReact,
   faVuejs,
-} from "@fortawesome/free-brands-svg-icons";
-import TextType from "../common/TextType";
-import { useState, type FC } from "react";
-import { useActiveSectionIds } from "../../hooks/useActiveSection";
-import { AboutSectionSkeleton } from "../common/skeletons/AboutSectionSkeleton";
-import resumePdf from "../../assets/tupham_resume.pdf";
-import { Modal } from "../common/Modal";
+} from '@fortawesome/free-brands-svg-icons';
+import TextType from '@/components/common/TextType';
+import { useState, type FC } from 'react';
+import { useActiveSectionIds } from '@/hooks/useActiveSection';
+import { AboutSectionSkeleton } from '@/components/common/skeletons/AboutSectionSkeleton';
+import resumePdf from '@/assets/tupham_resume.pdf';
+import { Modal } from '@/components/common/Modal';
 
-const helloWorld = "Hello World!";
+const helloWorld = 'Hello World!';
 
 function getFirstName(fullName: string) {
   const parts = fullName.trim().split(/\s+/).filter(Boolean);
@@ -24,12 +24,12 @@ function getFirstName(fullName: string) {
 export const AboutSection: FC = () => {
   const firstName = getFirstName(cv.name);
   const activeIds = useActiveSectionIds();
-  const isActive = activeIds.length > 0 ? activeIds.includes("about") : true;
+  const isActive = activeIds.length > 0 ? activeIds.includes('about') : true;
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const resumeUrl = `${resumePdf}#view=FitH`;
 
   const handleViewResumeMobile = () => {
-    window.open(resumeUrl, "_blank");
+    window.open(resumeUrl, '_blank');
   };
 
   const handleViewResume = () => {

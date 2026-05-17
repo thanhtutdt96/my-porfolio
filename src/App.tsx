@@ -1,23 +1,23 @@
-import { TopNavbar } from "./components/TopNavbar";
-import { SideNav } from "./components/SideNav";
-import { AboutSection } from "./components/sections/AboutSection";
-import { SkillsSection } from "./components/sections/SkillsSection";
-import { AiUsageSection } from "./components/sections/AiUsageSection";
-import { ProjectsSection } from "./components/sections/ProjectsSection";
-import { ContactSection } from "./components/sections/ContactSection";
-import { useActiveSection } from "./hooks/useActiveSection";
-import { useHasScrolled } from "./hooks/useHasScrolled";
-import { ActiveSectionProvider } from "./contexts/activeSectionContext";
-import type { FC } from "react";
+import { TopNavbar } from '@/components/TopNavbar';
+import { SideNav } from '@/components/SideNav';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { SkillsSection } from '@/components/sections/SkillsSection';
+import { AiUsageSection } from '@/components/sections/AiUsageSection';
+import { ProjectsSection } from '@/components/sections/ProjectsSection';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { useActiveSection } from '@/hooks/useActiveSection';
+import { useHasScrolled } from '@/hooks/useHasScrolled';
+import { ActiveSectionProvider } from '@/contexts/activeSectionContext';
+import type { FC } from 'react';
 
 const App: FC = () => {
-  const sectionIds = ["about", "skills", "ai", "projects", "contact"] as const;
+  const sectionIds = ['about', 'skills', 'ai', 'projects', 'contact'] as const;
   const activeSection = useActiveSection(sectionIds);
   const hasScrolled = useHasScrolled(220);
 
   return (
     <>
-      <div className="min-h-dvh bg-base-100">
+      <div className="min-h-dvh overflow-x-hidden bg-base-100">
         <TopNavbar />
 
         <ActiveSectionProvider value={activeSection}>
@@ -53,11 +53,11 @@ const App: FC = () => {
       </div>
       <SideNav
         items={[
-          { id: "about", label: "About" },
-          { id: "skills", label: "Skills" },
-          { id: "ai", label: "AI" },
-          { id: "projects", label: "Projects" },
-          { id: "contact", label: "Contact" },
+          { id: 'about', label: 'About' },
+          { id: 'skills', label: 'Skills' },
+          { id: 'ai', label: 'AI' },
+          { id: 'projects', label: 'Projects' },
+          { id: 'contact', label: 'Contact' },
         ]}
         activeId={activeSection.activeId}
         visible={hasScrolled}

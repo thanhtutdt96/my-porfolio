@@ -1,16 +1,16 @@
-import { Section } from "../Section";
-import { cv } from "../../data/resumeData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Section } from '@/components/Section';
+import { cv } from '@/data/resumeData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCode,
   faDatabase,
   faFlask,
   faScrewdriverWrench,
   faServer,
-} from "@fortawesome/free-solid-svg-icons";
-import type { FC } from "react";
-import clsx from "clsx";
-import { SkillsSectionSkeleton } from "../common/skeletons/SkillsSectionSkeleton";
+} from '@fortawesome/free-solid-svg-icons';
+import type { FC } from 'react';
+import clsx from 'clsx';
+import { SkillsSectionSkeleton } from '@/components/common/skeletons/SkillsSectionSkeleton';
 
 type SkillGroupProps = {
   title: string;
@@ -23,8 +23,8 @@ const SkillGroup: FC<SkillGroupProps> = ({ title, icon, items, className }) => {
   return (
     <div
       className={clsx(
-        "card border border-base-200 bg-base-300 shadow-sm",
-        className
+        'card border border-base-200 bg-base-300 shadow-sm',
+        className,
       )}
     >
       <div className="card-body">

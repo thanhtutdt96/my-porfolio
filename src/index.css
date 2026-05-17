@@ -1,8 +1,11 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 @plugin "daisyui" {
-  themes: dracula --default, light, dark --prefersdark;
-};
+  themes:
+    dracula --default,
+    light,
+    dark --prefersdark;
+}
 
 html {
   scroll-behavior: smooth;

@@ -1,8 +1,8 @@
-import { Section } from "../Section";
-import { cv } from "../../data/resumeData";
-import TextType from "../common/TextType";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { Section } from '@/components/Section';
+import { cv } from '@/data/resumeData';
+import TextType from '@/components/common/TextType';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faClipboardList,
   faMagnifyingGlass,
@@ -10,8 +10,8 @@ import {
   faRobot,
   faRocket,
   faUserCheck,
-} from "@fortawesome/free-solid-svg-icons";
-import type { FC } from "react";
+} from '@fortawesome/free-solid-svg-icons';
+import type { FC } from 'react';
 
 const aiUsageIconById: Record<string, IconDefinition> = {
   accelerate: faRocket,
@@ -50,7 +50,7 @@ export const AiUsageSection: FC = () => {
                 as="p"
                 loop={false}
                 startOnVisible
-                typingSpeed={15}
+                typingSpeed={20}
                 showCursor={false}
                 className="text-sm leading-relaxed text-base-content/85 sm:text-base"
               />

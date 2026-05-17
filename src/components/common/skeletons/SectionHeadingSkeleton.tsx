@@ -1,4 +1,4 @@
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from '@/components/common/skeletons/Skeleton';
 
 type Props = {
   hasEyebrow: boolean;
@@ -12,4 +12,3 @@ export function SectionHeadingSkeleton({ hasEyebrow }: Props) {
     </>
   );
 }
-

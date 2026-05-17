@@ -1,4 +1,4 @@
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from '@/components/common/skeletons/Skeleton';
 
 export function ContactSectionSkeleton() {
   return (
@@ -8,4 +8,3 @@ export function ContactSectionSkeleton() {
     </div>
   );
 }
-

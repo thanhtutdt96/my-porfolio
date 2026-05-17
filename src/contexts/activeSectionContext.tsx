@@ -1,6 +1,6 @@
-import { createContext } from "react";
-import type { ReactNode } from "react";
-import type { ActiveSectionState } from "../hooks/useActiveSection";
+import { createContext } from 'react';
+import type { ReactNode } from 'react';
+import type { ActiveSectionState } from '@/hooks/useActiveSection';
 
 const ActiveSectionIdContext = createContext<ActiveSectionState | null>(null);
 

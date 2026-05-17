@@ -1,10 +1,10 @@
-import { cv } from "../data/resumeData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
-import { useTheme } from "../hooks/useTheme";
-import type { FC } from "react";
+import { cv } from '@/data/resumeData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faLightbulb } from '@fortawesome/free-regular-svg-icons';
+import { useTheme } from '@/hooks/useTheme';
+import type { FC } from 'react';
 
 export type NavItem = {
   id: string;
@@ -12,11 +12,11 @@ export type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "ai", label: "AI" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'ai', label: 'AI' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 const NavLinks: FC = () => {
@@ -35,7 +35,7 @@ const NavLinks: FC = () => {
 
 function getInitials(name: string) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
-  const initials = (parts[0]?.[0] ?? "") + (parts.at(-1)?.[0] ?? "");
+  const initials = (parts[0]?.[0] ?? '') + (parts.at(-1)?.[0] ?? '');
   return initials.toUpperCase();
 }
 

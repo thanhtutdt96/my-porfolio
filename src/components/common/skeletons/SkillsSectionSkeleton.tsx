@@ -1,4 +1,4 @@
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from '@/components/common/skeletons/Skeleton';
 
 export function SkillsSectionSkeleton() {
   return (
@@ -11,4 +11,3 @@ export function SkillsSectionSkeleton() {
     </div>
   );
 }
-

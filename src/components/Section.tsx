@@ -1,7 +1,7 @@
-import { useActiveSectionIds } from "../hooks/useActiveSection";
-import type { FC, ReactNode } from "react";
-import { DefaultSectionSkeleton } from "./common/skeletons/DefaultSectionSkeleton";
-import { SectionHeadingSkeleton } from "./common/skeletons/SectionHeadingSkeleton";
+import { useActiveSectionIds } from '@/hooks/useActiveSection';
+import type { FC, ReactNode } from 'react';
+import { DefaultSectionSkeleton } from '@/components/common/skeletons/DefaultSectionSkeleton';
+import { SectionHeadingSkeleton } from '@/components/common/skeletons/SectionHeadingSkeleton';
 
 type Props = {
   id: string;
@@ -40,7 +40,7 @@ export const Section: FC<Props> = ({
             <SectionHeadingSkeleton hasEyebrow={!!eyebrow} />
           )}
         </div>
-        {isActive ? children : skeleton ?? <DefaultSectionSkeleton />}
+        {isActive ? children : (skeleton ?? <DefaultSectionSkeleton />)}
       </div>
     </section>
   );

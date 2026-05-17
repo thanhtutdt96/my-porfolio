@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from 'react';
 
 export type ModalProps = {
   open: boolean;
@@ -25,13 +25,13 @@ export function Modal({ open, title, onClose, children }: ModalProps) {
     <dialog
       ref={dialogRef}
       className="modal"
-      aria-label={title ?? "Modal"}
+      aria-label={title ?? 'Modal'}
       onClose={onClose}
       onCancel={onClose}
     >
       <div className="modal-box max-w-5xl overflow-hidden p-0">
         <div className="flex items-center justify-between gap-3 border-b border-base-200 px-4 py-3">
-          <h3 className="truncate text-sm font-semibold">{title ?? "Modal"}</h3>
+          <h3 className="truncate text-sm font-semibold">{title ?? 'Modal'}</h3>
           <button
             type="button"
             className="btn btn-ghost btn-sm"

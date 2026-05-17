@@ -1,37 +1,37 @@
-import { Section } from "../Section";
-import { cv } from "../../data/resumeData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faReact, faVuejs } from "@fortawesome/free-brands-svg-icons";
+import { Section } from '@/components/Section';
+import { cv } from '@/data/resumeData';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faReact, faVuejs } from '@fortawesome/free-brands-svg-icons';
 import {
   faCalculator,
   faCode,
   faFlagCheckered,
   faMusic,
   faRightLeft,
-} from "@fortawesome/free-solid-svg-icons";
-import type { FC } from "react";
-import { ProjectsSectionSkeleton } from "../common/skeletons/ProjectsSectionSkeleton";
+} from '@fortawesome/free-solid-svg-icons';
+import type { FC } from 'react';
+import { ProjectsSectionSkeleton } from '@/components/common/skeletons/ProjectsSectionSkeleton';
 
 const getProjectIcon = (
   name: string,
-  stack: readonly string[]
+  stack: readonly string[],
 ): IconDefinition => {
   const nameLower = name.toLowerCase();
   const stackLower = stack.map((s) => s.toLowerCase());
 
   switch (true) {
-    case nameLower.includes("calculator"):
+    case nameLower.includes('calculator'):
       return faCalculator;
-    case nameLower.includes("converter"):
+    case nameLower.includes('converter'):
       return faRightLeft;
-    case nameLower.includes("music"):
+    case nameLower.includes('music'):
       return faMusic;
-    case nameLower.includes("horse") || nameLower.includes("racing"):
+    case nameLower.includes('horse') || nameLower.includes('racing'):
       return faFlagCheckered;
-    case stackLower.some((s) => s.includes("react")):
+    case stackLower.some((s) => s.includes('react')):
       return faReact;
-    case stackLower.some((s) => s.includes("vue")):
+    case stackLower.some((s) => s.includes('vue')):
       return faVuejs;
     default:
       return faCode;

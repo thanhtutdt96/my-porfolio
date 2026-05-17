@@ -1,7 +1,7 @@
-import type { FC } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb, faMoon } from "@fortawesome/free-regular-svg-icons";
-import { useTheme } from "../hooks/useTheme";
+import type { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLightbulb, faMoon } from '@fortawesome/free-regular-svg-icons';
+import { useTheme } from '@/hooks/useTheme';
 
 export type SideNavItem = {
   id: string;
@@ -16,15 +16,15 @@ type Props = {
 
 export const SideNav: FC<Props> = ({ items, activeId, visible }) => {
   const { theme, toggle, isDarkMode } = useTheme();
-  const themeTooltip = theme === "dracula" ? "Light mode" : "Dark mode";
+  const themeTooltip = theme === 'dracula' ? 'Light mode' : 'Dark mode';
 
   return (
     <div
       className={[
-        "fixed right-4 top-1/2 z-40 -translate-y-1/2 flex",
-        visible ? "opacity-100" : "pointer-events-none opacity-0",
-        "transition-opacity animate-in fade-in duration-500 ease-in-out",
-      ].join(" ")}
+        'fixed right-4 top-1/2 z-40 -translate-y-1/2 flex',
+        visible ? 'opacity-100' : 'pointer-events-none opacity-0',
+        'transition-opacity animate-in fade-in duration-500 ease-in-out',
+      ].join(' ')}
       aria-hidden={!visible}
     >
       <div className="flex flex-col items-center gap-3 rounded-full border border-base-200 bg-base-100/80 px-3 py-4 shadow-sm backdrop-blur">
@@ -39,14 +39,14 @@ export const SideNav: FC<Props> = ({ items, activeId, visible }) => {
               >
                 <a
                   href={`#${it.id}`}
-                  aria-current={isActive ? "page" : undefined}
+                  aria-current={isActive ? 'page' : undefined}
                   className={[
-                    "block h-3 w-3 rounded-full",
+                    'block h-3 w-3 rounded-full',
                     isActive
-                      ? "bg-primary"
-                      : "bg-base-content/20 hover:bg-base-content/35",
-                    "transition-colors",
-                  ].join(" ")}
+                      ? 'bg-primary'
+                      : 'bg-base-content/20 hover:bg-base-content/35',
+                    'transition-colors',
+                  ].join(' ')}
                 >
                   <span className="sr-only">{it.label}</span>
                 </a>
@@ -75,7 +75,7 @@ export const SideNav: FC<Props> = ({ items, activeId, visible }) => {
           <button
             type="button"
             className="btn btn-primary btn-xs btn-circle"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Scroll to top"
           >
             <svg

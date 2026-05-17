@@ -1,5 +1,5 @@
-import { useContext, useEffect, useMemo, useState } from "react";
-import { ActiveSectionIdContext } from "../contexts/activeSectionContext";
+import { useContext, useEffect, useMemo, useState } from 'react';
+import { ActiveSectionIdContext } from '@/contexts/activeSectionContext';
 
 type UseActiveSectionOptions = {
   rootMargin?: string;
@@ -13,14 +13,14 @@ export type ActiveSectionState = {
 
 export const useActiveSection = (
   sectionIds: readonly string[],
-  options: UseActiveSectionOptions = {}
+  options: UseActiveSectionOptions = {},
 ): ActiveSectionState => {
-  const { rootMargin = "-120px 0px -60% 0px", threshold = 0.1 } = options;
-  const firstId = sectionIds[0] ?? "";
-  const lastId = sectionIds[sectionIds.length - 1] ?? "";
+  const { rootMargin = '-120px 0px -60% 0px', threshold = 0.1 } = options;
+  const firstId = sectionIds[0] ?? '';
+  const lastId = sectionIds[sectionIds.length - 1] ?? '';
   const [activeId, setActiveId] = useState(firstId);
   const [activeIds, setActiveIds] = useState<readonly string[]>(
-    firstId ? [firstId] : []
+    firstId ? [firstId] : [],
   );
 
   const ids = useMemo(() => [...sectionIds], [sectionIds]);
@@ -69,7 +69,7 @@ export const useActiveSection = (
           return [...prev, nextId];
         });
       },
-      { root: null, rootMargin, threshold }
+      { root: null, rootMargin, threshold },
     );
 
     for (const el of els) observer.observe(el);
@@ -86,7 +86,7 @@ export const useActiveSection = (
       if (firstId && window.scrollY <= 0) {
         setActiveId(firstId);
         setActiveIds((prev) =>
-          prev.includes(firstId) ? prev : [firstId, ...prev]
+          prev.includes(firstId) ? prev : [firstId, ...prev],
         );
         return;
       }
@@ -98,13 +98,13 @@ export const useActiveSection = (
         if (bottom >= docHeight - 2) {
           setActiveId(lastId);
           setActiveIds((prev) =>
-            prev.includes(lastId) ? prev : [...prev, lastId]
+            prev.includes(lastId) ? prev : [...prev, lastId],
           );
         }
       }
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [firstId, lastId]);
 
   return { activeId, activeIds };
